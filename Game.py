@@ -1,10 +1,12 @@
 import sys,time
 """ these are data types which store information such as the room desriptions, score and player inventory"""
 Room1 = "You are in a small room with no windows and a flickering light above you"
+Room1Items = ['bed' , 'table']
 Room2 = "room 2"
 Room3 = "room 3"
 Room4 = "room 4"
 Room5 = "room 5"
+PlayerInventory = []
 
 """ These are a list of functions i have created which allow me to save time by not having to re-write code"""
 
@@ -28,6 +30,8 @@ def CurrentAction():
 
 	if Action == "Describe":
 		DescribeRoom(CurrentRoom)
+	elif Action == "Items":
+		RoomItems(CurrentRoom)
 
 
 def print_slow(str):
@@ -35,6 +39,11 @@ def print_slow(str):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.05)
+
+def RoomItems(CurrentRoom):
+	if CurrentRoom == Room1:
+		print(f"Around the room there lies {Room1Items}")
+
 	
 
 """ This is where the game code begins"""
@@ -51,5 +60,6 @@ print_slow(f"'well {Name} I am your keeper and you\'re stuck with me now'\n")
 
 print("The unknown man pulls the sack that has been covering your head and walks away laughing leaving you in an locked cell")
 
-CurrentAction()
+while CurrentRoom == Room1:
+	CurrentAction()
 
