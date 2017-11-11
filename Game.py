@@ -1,7 +1,7 @@
 import sys,time
 """ these are data types which store information such as the room desriptions, score and player inventory"""
 Room1 = "You are in a small room with no windows and a flickering light above you"
-Room1Items = ['bed' , 'table']
+CurrentRoomItems = []
 Room2 = "room 2"
 Room3 = "room 3"
 Room4 = "room 4"
@@ -42,15 +42,15 @@ def print_slow(str):
 
 def RoomItems(CurrentRoom):
 	if CurrentRoom == Room1:
-		print(f"Around the room there lies {Room1Items}")
+		print(f"Around the room there lies {CurrentRoomItems}")
 
-	
 
 """ This is where the game code begins"""
 
 #CurrentRoom must be defined in order for the Describe room function to work
 
 CurrentRoom = Room1
+CurrentRoomItems.append(['Bed' , 'Table'])
 
 print_slow("'Well hello there, whats your name?' ")
 
