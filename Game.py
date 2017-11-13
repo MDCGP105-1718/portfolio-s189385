@@ -11,7 +11,6 @@ PlayerInventory = []
 """ These are a list of functions i have created which allow me to save time by not having to re-write code"""
 
 def DescribeRoom(CurrentRoom):
-	
 	if CurrentRoom == Room1:
 		print(Room1)
 	elif CurrentRoom == Room2:
@@ -23,15 +22,38 @@ def DescribeRoom(CurrentRoom):
 	elif CurrentRoom == Room5:
 		print(Room3)
 
-
 def CurrentAction():
-
 	Action = input("What would you like to do? ")
 
 	if Action == "Describe":
 		DescribeRoom(CurrentRoom)
 	elif Action == "Items":
-		RoomItems(CurrentRoom)
+		print(CurrentRoomItems)
+	elif Action == "Interact":
+		ItemSelector()
+	elif Action == "Inventory":
+		print(PlayerInventory)
+	else:
+		print(f"You cant do that {Name}")
+
+def ItemSelector():
+	n = 0
+while n <= 7:
+	x = input("What would you like to Interact with?")
+	n = n+1
+	if x in CurrentRoomItems:
+		print("ok")
+	if x not in CurrentRoomItems:
+		print("ValueError: ",x, "is not in list")
+
+
+
+	
+
+	
+
+
+
 
 
 def print_slow(str):
@@ -40,9 +62,7 @@ def print_slow(str):
         sys.stdout.flush()
         time.sleep(0.05)
 
-def RoomItems(CurrentRoom):
-	if CurrentRoom == Room1:
-		print(f"Around the room there lies {CurrentRoomItems}")
+
 
 
 """ This is where the game code begins"""
