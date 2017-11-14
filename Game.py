@@ -8,6 +8,7 @@ Room4 = "room 4"
 Room5 = "room 5"
 PlayerInventory = []
 
+
 """ These are a list of functions i have created which allow me to save time by not having to re-write code"""
 
 # The below function takes the argument of CurrentRoom to print the user a description of the room. 
@@ -26,18 +27,34 @@ def DescribeRoom(CurrentRoom):
 # The current action functions allow the user to interact with the game by inputting commands such as Describe and Items. 
 def CurrentActionRoom1():
 	Action = input("What would you like to do? ")
+	MoveTable = False
 
 	if Action == "describe":
 		DescribeRoom(CurrentRoom)
 	elif Action == "items":
-		print(CurrentRoomItems)
+		print(f"In this room there is {CurrentRoomItems}")
 	elif Action == "inventory":
 		print(PlayerInventory)
 	elif Action == "take bed":
-		print("You strap the 40 kilo bedframe to your back, your speed is dramatically reduced") and PlayerInventory.append(Bed)
-
+		print("You cannot be serious...")
+	elif Action == "take table":
+		print("Seriously?")
+	elif Action == "move bed":
+		print("It is attached to the wall")
+	elif Action == "move table" and MoveTable == False:
+		MoveTable()
 	else:
 		print(f"You cant do that {Name}")
+
+def MoveTable():
+	x = 1
+	
+	while x == 1:
+		print("You slide the table away from the wall to reveal a paperclip")
+		CurrentRoomItems.append(['paperclip'])
+		x =+ 1
+	
+	
 
 # This function prints text slowly in order to make the game more emmersive. 
 
@@ -55,7 +72,7 @@ def print_slow(str):
 #CurrentRoom must be defined in order for the Describe room function to work
 
 CurrentRoom = Room1
-CurrentRoomItems.append(['Bed' , 'Table'])
+CurrentRoomItems.append(['bed' , 'table'])
 
 print_slow("'Well hello there, whats your name?' ")
 
