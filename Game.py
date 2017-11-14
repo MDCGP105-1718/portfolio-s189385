@@ -10,6 +10,7 @@ PlayerInventory = []
 
 """ These are a list of functions i have created which allow me to save time by not having to re-write code"""
 
+# The below function takes the argument of CurrentRoom to print the user a description of the room. 
 def DescribeRoom(CurrentRoom):
 	if CurrentRoom == Room1:
 		print(Room1)
@@ -22,39 +23,23 @@ def DescribeRoom(CurrentRoom):
 	elif CurrentRoom == Room5:
 		print(Room3)
 
-def CurrentAction():
+# The current action functions allow the user to interact with the game by inputting commands such as Describe and Items. 
+def CurrentActionRoom1():
 	Action = input("What would you like to do? ")
 
-	if Action == "Describe":
+	if Action == "describe":
 		DescribeRoom(CurrentRoom)
-	elif Action == "Items":
+	elif Action == "items":
 		print(CurrentRoomItems)
-	elif Action == "Interact":
-		ItemSelector()
-	elif Action == "Inventory":
+	elif Action == "inventory":
 		print(PlayerInventory)
+	elif Action == "take bed":
+		print("You strap the 40 kilo bedframe to your back, your speed is dramatically reduced") and PlayerInventory.append(Bed)
+
 	else:
 		print(f"You cant do that {Name}")
 
-def ItemSelector():
-	n = 0
-while n <= 7:
-	x = input("What would you like to Interact with?")
-	n = n+1
-	if x in CurrentRoomItems:
-		print("ok")
-	if x not in CurrentRoomItems:
-		print("ValueError: ",x, "is not in list")
-
-
-
-	
-
-	
-
-
-
-
+# This function prints text slowly in order to make the game more emmersive. 
 
 def print_slow(str):
     for letter in str:
@@ -74,6 +59,8 @@ CurrentRoomItems.append(['Bed' , 'Table'])
 
 print_slow("'Well hello there, whats your name?' ")
 
+# The user inputs their name here, this is referenced throughout the game. 
+
 Name = input("")
 
 print_slow(f"'well {Name} I am your keeper and you\'re stuck with me now'\n")
@@ -81,5 +68,5 @@ print_slow(f"'well {Name} I am your keeper and you\'re stuck with me now'\n")
 print("The unknown man pulls the sack that has been covering your head and walks away laughing leaving you in an locked cell")
 
 while CurrentRoom == Room1:
-	CurrentAction()
+	CurrentActionRoom1()
 
