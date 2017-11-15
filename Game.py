@@ -24,10 +24,27 @@ def DescribeRoom(CurrentRoom):
 	elif CurrentRoom == Room5:
 		print(Room3)
 
+# Room take functions allow the user to interact with the items within the room
+
+def Room1Take():
+		
+	SelectedItem = input("What item would you like to take? ")
+
+	while SelectedItem in CurrentRoomItems:
+		if SelectedItem == "bed":
+			print("You cannot be serious...")
+		elif SelectedItem == "table":
+			print("Seriously?")
+		elif SelectedItem == "paperclip":
+			PlayerInventory.append(['paperclip'])
+			print("hmmm maybe you could pick a lock with that...")
+	else:
+		print("There is no such item")
+
 # The current action functions allow the user to interact with the game by inputting commands such as Describe and Items. 
+
 def CurrentActionRoom1():
 	Action = input("What would you like to do? ")
-	MoveTable = False
 
 	if Action == "describe":
 		DescribeRoom(CurrentRoom)
@@ -35,24 +52,29 @@ def CurrentActionRoom1():
 		print(f"In this room there is {CurrentRoomItems}")
 	elif Action == "inventory":
 		print(PlayerInventory)
-	elif Action == "take bed":
-		print("You cannot be serious...")
-	elif Action == "take table":
-		print("Seriously?")
-	elif Action == "move bed":
-		print("It is attached to the wall")
-	elif Action == "move table" and MoveTable == False:
-		MoveTable()
+	elif Action == "take":
+		Room1Take()
+	elif Action == "move":
+		Room1Move()
+	elif Action == "move n":
+		print("You move to the north of the room, you come to a small locked door")
+	elif Action == "move e":
+		print("You move to the east of the room, there is a small bed in the right hand corner.")
+	elif Action == "move s":
+		print("You move to the south of the room, the only thing you see is a table pushed against the wall")
+	elif Action == "move n":
+		print("You move to the west of the room, there is nothing here.")
 	else:
 		print(f"You cant do that {Name}")
-
-def MoveTable():
-	x = 1
 	
-	while x == 1:
-		print("You slide the table away from the wall to reveal a paperclip")
-		CurrentRoomItems.append(['paperclip'])
-		x =+ 1
+
+
+
+
+
+
+
+	
 	
 	
 
