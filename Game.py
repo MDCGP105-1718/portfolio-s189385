@@ -1,111 +1,109 @@
-import sys,time
-""" these are data types which store information such as the room desriptions, score and player inventory"""
-Room1 = "You are in a small room with no windows and a flickering light above you"
-CurrentRoomItems = []
-Room2 = "room 2"
-Room3 = "room 3"
-Room4 = "room 4"
-Room5 = "room 5"
-PlayerInventory = []
+# In this section i will be defining classes and thir methods and attributes.
 
+# Here is the player class.
 
-""" These are a list of functions i have created which allow me to save time by not having to re-write code"""
+class Player():
 
-# The below function takes the argument of CurrentRoom to print the user a description of the room. 
-def DescribeRoom(CurrentRoom):
-	if CurrentRoom == Room1:
-		print(Room1)
-	elif CurrentRoom == Room2:
-		print(Room2)
-	elif CurrentRoom == Room3:
-		print(Room3)
-	elif CurrentRoom == Room4:
-		print(Room3)
-	elif CurrentRoom == Room5:
-		print(Room3)
+    def __init__(self, items, score, name):
 
-# Room take functions allow the user to interact with the items within the room
+        self.items = items
+        self.score = score
+        self.name = name
 
-def Room1Take():
-		
-	SelectedItem = input("What item would you like to take? ")
+    def PrintItems(self):
 
-	while SelectedItem in CurrentRoomItems:
-		if SelectedItem == "bed":
-			print("You cannot be serious...")
-		elif SelectedItem == "table":
-			print("Seriously?")
-		elif SelectedItem == "paperclip":
-			PlayerInventory.append(['paperclip'])
-			print("hmmm maybe you could pick a lock with that...")
-	else:
-		print("There is no such item")
+        if len(player.items) > 0:
+            return str(items)
+        else:
+            return "You dont have any items"
 
-# The current action functions allow the user to interact with the game by inputting commands such as Describe and Items. 
+    def PrintScore(self):
+        return self.score
 
-def CurrentActionRoom1():
-	Action = input("What would you like to do? ")
+# This is the room class, it contains information surrounding the room and its items.
 
-	if Action == "describe":
-		DescribeRoom(CurrentRoom)
-	elif Action == "items":
-		print(f"In this room there is {CurrentRoomItems}")
-	elif Action == "inventory":
-		print(PlayerInventory)
-	elif Action == "take":
-		Room1Take()
-	elif Action == "move":
-		Room1Move()
-	elif Action == "move n":
-		print("You move to the north of the room, you come to a small locked door")
-	elif Action == "move e":
-		print("You move to the east of the room, there is a small bed in the right hand corner.")
-	elif Action == "move s":
-		print("You move to the south of the room, the only thing you see is a table pushed against the wall")
-	elif Action == "move n":
-		print("You move to the west of the room, there is nothing here.")
-	else:
-		print(f"You cant do that {Name}")
-	
+class Room:
 
+    def __init__(self, description, items):
 
+        self.items = items
+        self.description = description
 
+    def DescribeRoom(self):
+        return self.description
 
+    def DescribeItems(self):
+        return "In this room there is" + str(self.items)
 
+# This is the item class where all the characteristics of an item are defined
 
+class Item:
 
-	
-	
-	
+    def __init__(self, description, actions):
 
-# This function prints text slowly in order to make the game more emmersive. 
+        self.description = description
+        self.actions = actions
 
-def print_slow(str):
-    for letter in str:
-        sys.stdout.write(letter)
-        sys.stdout.flush()
-        time.sleep(0.05)
+    def DescribeItem(self):
+        return self.description
 
+    def PrintActions(self):
+        return "You can" + str(self.actions) + "this item"
 
+# In this section I am defining class instances
 
+# Here are all of my room instances collected together
 
-""" This is where the game code begins"""
+Room1 = Room("A small room with no windows and a locked door preventing you from leaving", ['Table', 'Bed'])
 
-#CurrentRoom must be defined in order for the Describe room function to work
+# Here are all of my item instances collected together
+
+table = Item('A small round table' , ['descibe' , 'move'])
+bed = Item('A single bed with a metal frame attaching it to the wall', ['describe'])
+
+# Here is the player instance
+
+player = Player( [] , 100, "" )
+
+# My game code starts here
 
 CurrentRoom = Room1
-CurrentRoomItems.append(['bed' , 'table'])
+TableMoved = False
 
-print_slow("'Well hello there, whats your name?' ")
 
-# The user inputs their name here, this is referenced throughout the game. 
+# This function allows the player to interact with the game
 
-Name = input("")
+def Actions(TableMoved):
 
-print_slow(f"'well {Name} I am your keeper and you\'re stuck with me now'\n")
 
-print("The unknown man pulls the sack that has been covering your head and walks away laughing leaving you in an locked cell")
+
+    Action = input("What would you like to do ? ")
+
+    if Action == "describe":
+        print(Room1.DescribeRoom())
+    elif Action == "score":
+        print(player.PrintScore())
+    elif Action == "inventory":
+        print(player.PrintItems())
+    elif Action == "items":
+        print(Room1.DescribeItems())
+    elif Action == "describe bed":
+        print(bed.DescribeItem())
+    elif Action == "describe table":
+        print(table.DescribeItem())
+    elif Action == "bed actions":
+        print(bed.PrintActions())
+    elif Action == "table actions":
+        print(table.PrintActions())
+    elif Action == "move table":
+        while TableMoved == False:
+                Room1.items.append('paperclip')
+                print("You moved the table to reveal a paperclip, it is added to you inventory")
+                
+        else:
+            print("You already did that")
+    else:
+        print("You cant do that")
 
 while CurrentRoom == Room1:
-	CurrentActionRoom1()
-
+    Actions(TableMoved)
