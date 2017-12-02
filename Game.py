@@ -10,15 +10,7 @@ class Player():
         self.score = score
         self.name = name
 
-    def PrintItems(self):
 
-        if len(player.items) > 0:
-            return str(items)
-        else:
-            return "You dont have any items"
-
-    def PrintScore(self):
-        return self.score
 
 # This is the room class, it contains information surrounding the room and its items.
 
@@ -28,12 +20,6 @@ class Room:
 
         self.items = items
         self.description = description
-
-    def DescribeRoom(self):
-        return self.description
-
-    def DescribeItems(self):
-        return "In this room there is" + str(self.items)
 
 # This is the item class where all the characteristics of an item are defined
 
@@ -65,45 +51,56 @@ bed = Item('A single bed with a metal frame attaching it to the wall', ['describ
 
 player = Player( [] , 100, "" )
 
+# Here are all the functions i will use throughout the whole game.
+
+# This fucntion takes in the variable of CurrentRoom and prints the room description
+
+def DescribeCurrentRoom(CurrentRoom):
+
+    if CurrentRoom == Room1:
+        return Room1.description
+
+
+# This fucntion prints the items in the room
+
+def DescribeCurrentRoomItems(CurrentRoom):
+
+    if CurrentRoom == Room1:
+        return "in this room there is" + str(Room1.items)
+
+# This function prints the players items
+
+def PlayerItems(player):
+
+    if len(player.items) > 0:
+        return str(player.items)
+    else:
+        return "You dont have any items"
+
 # My game code starts here
 
+# Below are some variables needed for the functions to display the correct data for this room.
+
 CurrentRoom = Room1
-TableMoved = False
+
+# Below in a function which allows specific intereactions for this room
 
 
-# This function allows the player to interact with the game
+def Room1Actions():
 
-def Actions(TableMoved):
+    CurrentAction = input("What would you like to do? ")
 
+    if CurrentAction == "describe":
+        print(DescribeCurrentRoom(CurrentRoom))
+    if CurrentAction == "items":
+        print(DescribeCurrentRoomItems(CurrentRoom))
+    if CurrentAction == "inventory":
+        print(PlayerItems(player))
+    if CurrentAction == "score":
+        print(player.score)
 
+player.name = input("What is your name? ")
 
-    Action = input("What would you like to do ? ")
-
-    if Action == "describe":
-        print(Room1.DescribeRoom())
-    elif Action == "score":
-        print(player.PrintScore())
-    elif Action == "inventory":
-        print(player.PrintItems())
-    elif Action == "items":
-        print(Room1.DescribeItems())
-    elif Action == "describe bed":
-        print(bed.DescribeItem())
-    elif Action == "describe table":
-        print(table.DescribeItem())
-    elif Action == "bed actions":
-        print(bed.PrintActions())
-    elif Action == "table actions":
-        print(table.PrintActions())
-    elif Action == "move table":
-        while TableMoved == False:
-                Room1.items.append('paperclip')
-                print("You moved the table to reveal a paperclip, it is added to you inventory")
-                
-        else:
-            print("You already did that")
-    else:
-        print("You cant do that")
 
 while CurrentRoom == Room1:
-    Actions(TableMoved)
+    Room1Actions()
