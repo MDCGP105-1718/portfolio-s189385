@@ -30,12 +30,6 @@ class Item:
         self.description = description
         self.actions = actions
 
-    def DescribeItem(self):
-        return self.description
-
-    def PrintActions(self):
-        return "You can" + str(self.actions) + "this item"
-
 # In this section I am defining class instances
 
 # Here are all of my room instances collected together
@@ -44,8 +38,9 @@ Room1 = Room("A small room with no windows and a locked door preventing you from
 
 # Here are all of my item instances collected together
 
-table = Item('A small round table' , ['descibe' , 'move'])
+table = Item('A small round table, you might be able to move it.' , ['describe' , 'move'])
 bed = Item('A single bed with a metal frame attaching it to the wall', ['describe'])
+paperclip = Item('A small paperclip, you might be able to pick a lock with that.' , ['pick lock'])
 
 # Here is the player instance
 
@@ -77,11 +72,19 @@ def PlayerItems(player):
     else:
         return "You dont have any items"
 
+# This is the table moved fucntion which allows me to print something based upon a boolean value
+
+def IsTableMoved(TableMoved) 
+
+
+
 # My game code starts here
 
 # Below are some variables needed for the functions to display the correct data for this room.
 
 CurrentRoom = Room1
+TableMoved = "no"
+
 
 # Below in a function which allows specific intereactions for this room
 
@@ -92,14 +95,30 @@ def Room1Actions():
 
     if CurrentAction == "describe":
         print(DescribeCurrentRoom(CurrentRoom))
-    if CurrentAction == "items":
+    elif CurrentAction == "items":
         print(DescribeCurrentRoomItems(CurrentRoom))
-    if CurrentAction == "inventory":
+    elif CurrentAction == "inventory":
         print(PlayerItems(player))
-    if CurrentAction == "score":
+    elif CurrentAction == "score":
         print(player.score)
+    elif CurrentAction == "table actions":
+        print("You can " + str(table.actions) + "this item")
+    elif CurrentAction == "describe table":
+        print(table.description)
+    elif CurrentAction == "bed actions":
+        print("You can " + str(bed.actions) + "this item")
+    elif CurrentAction == "describe bed":
+        print(bed.description)
+    elif CurrentAction == "move table":
+        if TableMoved == "no":
+            print("you move the table")
+            tablemoved = "yes"
+            return TableMoved and print(TableMoved)
 
-player.name = input("What is your name? ")
+
+        else:
+            print("you already did that")
+
 
 
 while CurrentRoom == Room1:
