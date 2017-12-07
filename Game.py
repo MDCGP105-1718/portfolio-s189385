@@ -72,18 +72,13 @@ def PlayerItems(player):
     else:
         return "You dont have any items"
 
-# This is the table moved fucntion which allows me to print something based upon a boolean value
-
-def IsTableMoved(TableMoved) 
-
-
-
 # My game code starts here
 
 # Below are some variables needed for the functions to display the correct data for this room.
 
 CurrentRoom = Room1
 TableMoved = "no"
+DoorLocked = "yes"
 
 
 # Below in a function which allows specific intereactions for this room
@@ -105,21 +100,42 @@ def Room1Actions():
         print("You can " + str(table.actions) + "this item")
     elif CurrentAction == "describe table":
         print(table.description)
+    elif CurrentAction == "describe paperclip" and "paperclip" in player.items:
+        print(paperclip.description)
+    elif CurrentAction == ("paperclip actions"):
+        print("You can " + str(paperclip.actions) + "this item")
     elif CurrentAction == "bed actions":
         print("You can " + str(bed.actions) + "this item")
     elif CurrentAction == "describe bed":
         print(bed.description)
+    elif CurrentAction == "walk n":
+        print("The door is locked")
+    elif CurrentAction == "pick lock" and "paperclip" in player.items:
+        if DoorLocked == "yes":
+            print("You pick the lock opening the door")
+            return "no"
+        else:
+             print("You already did that")
     elif CurrentAction == "move table":
         if TableMoved == "no":
-            print("you move the table")
-            tablemoved = "yes"
-            return TableMoved and print(TableMoved)
-
-
+            print("you move the table to find a paperclip, it is added to your inventory")
+            player.items.append('paperclip')
+            return "yes"
         else:
             print("you already did that")
+    else:
+        print("you can't do that")
 
+    if TableMoved == "yes":
+        return "yes"
+    else:
+        return "no"
+
+    if DoorLocked == "no":
+        return "no"
+    else:
+        return "yes"
 
 
 while CurrentRoom == Room1:
-    Room1Actions()
+    TableMoved = Room1Actions()
