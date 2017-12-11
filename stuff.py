@@ -382,7 +382,7 @@ while GameCompleted == False:
 print_slow("You awaken in your beedroom \n")
 
 if 'painting' in player.items:
-    print_slow("You glance at the wall see the Mina Lisa \n")
+    print_slow("You glance at the wall see the Mona Lisa \n")
     print_slow(f"Your score was {player.score}\n")
     print_slow("Thanks for playing \n")
 else:
