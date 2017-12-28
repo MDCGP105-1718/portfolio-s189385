@@ -1,0 +1,191 @@
+*
+{
+	padding: 0;
+	margin: 0;
+}
+body
+{
+	display: flex;
+	justify-content: center;
+}
+@media screen and (min-width: 1000px)
+{
+	header
+	{
+		width: 90%;
+		position: fixed;
+		background-color: white;
+		top: 0;
+		padding: 10px 0 10px 0;
+		z-index: 200;
+	}
+	.SocialContainerOuter
+	{
+		width: 100%;
+	}
+	.SocialContainerInner
+	{
+		width: 250px;
+		height: 50px;
+		background-color: black;
+		margin-left: auto;
+	}
+	.NavAndLogoContainer
+	{
+		width: 100%;
+		padding: 10px 0 10px 0;
+	}
+	.LogoContainer
+	{
+		height: 100px;
+		width: 25%;
+		background-color: black;
+		float: left;
+	}
+	.NavContainer
+	{
+		height: 100px;
+		width: 70%;
+		background-color: black;
+		float: right;
+	}
+	.BodyContainer
+	{
+		width: 90%;
+		height: 10000px;
+		position: relative;
+		top: 180px;
+	}
+	.JavaSlideshowContainer
+	{
+		height: 600px;
+		width: 100%;
+		background-color: black;
+	}
+	.WelcomeText
+	{
+		padding: 50px 0 50px 0;
+		width: 100%;
+	}
+	.WelcomeText h1
+	{
+		width: 100%;
+		text-align: center;
+		font-family: Arial;
+		font-size: 25px;
+	}
+	.WelcomeText p
+	{
+		font-size: 20px;
+		font-family: Arial;
+		width: 100%;
+		text-align: center;
+		padding: 10px 0 10px 0;
+	}
+	.MeetTheTeamContainer
+	{
+		padding: 25px 0 25px 0;
+		width: 100%;
+	}
+	.MeetTheTeamContainer h1 
+	{
+		width: 100%;
+		text-align: center;
+		font-family: Arial;
+		font-size: 25px;
+		padding-bottom: 50px;
+	}
+	.ProfilesContainer
+	{
+		height: 350px;
+		width: 100%;
+		background-color: black;
+	}
+	.NewsContainer
+	{
+		padding: 25px 0 25px 0;
+		text-align: center;
+	}
+	.NewsContainer h1
+	{
+		width: 100%;
+		text-align: center;
+		font-family: Arial;
+		font-size: 25px;
+		padding-bottom: 50px;
+
+	}
+	.News
+	{
+		padding: 10px 0 10px 0;
+		width: 90%;
+		display: inline-flex;
+		justify-content: space-between;
+	}
+	.Collumn
+	{
+		padding: 25px 0 25px 0;
+		height: 700px;
+		width: 30%;
+	}
+	.LargeArticle
+	{
+		height: 500px;
+		width: 100%;
+		background-color: black;
+	}
+	.SmallArticle
+	{
+		height: 250px;
+		width: 100%;
+		background-color: black;
+		margin-bottom: 25px;
+	}
+	.VideoContainer
+	{
+		width: 100%;
+	
+		padding: 25px 0 25px 0;
+		margin-top: 75px;
+		text-align: center;
+	}
+	.VideoContainer h1
+	{
+		width: 100%;
+		text-align: center;
+		font-family: Arial;
+		font-size: 25px;
+		padding-bottom: 50px;
+	}
+	.VideoInner
+	{
+		width: 70%;
+		height: 500px;
+		background-color: black;
+		margin:0 auto 0 auto;
+	}
+	.SponsorsContainer
+	{
+		width: 100%;
+		padding: 25px 0 25px 0;
+	}
+	.SponsorsContainer h1
+	{
+		width: 100%;
+		text-align: center;
+		font-family: Arial;
+		font-size: 25px;
+		padding-bottom: 50px;
+	}
+	.SponsorsContainerInner
+	{
+		width: 70%;
+		padding: 25px 0 25px 0;
+		display: flex;
+		justify-content: space-around;
+		margin: 0 auto 0 auto;
+	}
+
+
+
+}
