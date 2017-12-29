@@ -67,6 +67,38 @@ painting = Item("an exact replica of the Mona Lisa" , ['take', 'describe' ])
 
 # Below are all the functions used within the game
 
+# This function breaks down inputted text into ascii lowercase
+
+def StringStripper(str):
+    
+    Ascii = "abcdefghijklmnopqrstuvwxyz"
+
+    string = ""
+
+    str = str.lower()
+
+    for c in str:
+        if c in Ascii:
+            string = string + c
+
+    return string
+
+# This function breaks down a list
+
+def ListStripper(str):
+    
+    Ascii = "abcdefghijklmnopqrstuvwxyz,"
+
+    string = ""
+
+    str = str.lower()
+
+    for c in str:
+        if c in Ascii:
+            string = string + c
+
+    return string
+
 # This function is used to navigate through the game.
 
 def Walk():
