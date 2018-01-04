@@ -1,214 +1,116 @@
-# Below are my classes.
-
-# Here is the player class.
+# This is the player class
 
 class Player():
 
-    def __init__(self, items, score, name):
+    def __init__(self, score, items, name):
 
-        self.items = items
         self.score = score
+        self.items = items
         self.name = name
 
+# This is the player instance
 
+Player1 = Player(0, [], "")
 
-# This is the room class, it contains information surrounding the room and its items.
+# This is the room class
 
-class Room:
-
-    def __init__(self, description, items):
-
-        self.description = description
+class Room(object):
+    
+    def __init__(self, items, description, directions ):
+       
         self.items = items
-
-
-# This is the item class where all the characteristics of an item are defined.
-
-class Item:
-
-    def __init__(self, description, actions):
-
         self.description = description
-        self.actions = actions
+        self.directions = directions
 
-#  Here i will be defining all of the instances of my classes.
+# This is the class for room1
 
-# Here is the player instance where all the attributes are defined.
+Room1 = Room(['table' , 'bed'] , "A small room with no windows and a single door on the north wall", "In this room you can walk north")
 
-player = Player([] , 100 , "")
+# This is the item class
 
-# Here is the room instances.
+class Item(object):
 
-Room1 = Room(  "A small room with a locked door preventing you from leaving" , ['table', 'bed'])
+    def __init__(self, ):
+        
+        
 
-Room2 = Room( "A narrow corridor with a door on every wall" , [''])
+# This is the help function which prints when the user types 'help'
 
-Room3 = Room(  "You are in what seems to be a staff room" , ['wall safe' , 'lockers'])
+def Help():
 
-Room4 = Room( "You find yourself in a glass room surrounded by thousands of people" , ['keypad' , 'painting'])
+    print('You have been trapped in a building, the aim of the game is to escape')
+    print("To list current held type 'inventory' ")
+    print("To print your current score type 'score' ")
+    print("To list the current items in the room type 'items' ")
+    print("To print the description of the room type 'description' ")
+    print("To list all the directions you can walk in the current room type 'directions' ")
 
-# Here are all of the item instances
+def ItemActions():
 
-table = Item("A solid oak table, looks like it can be moved" , ['describe' , 'move'])
+    SelectedItems = input("What item would you like to know the actions for? ")
+    
+    SelectedItems = StringStripper(SelectedItems)
 
-bed = Item("A metal framed bed, its attached to the wall" , ['Describe'])
-
-paperclip = Item("A small paperclip, maybe you can pick a lock with that" , ['describe' , 'pick lock'])
-
-wallsafe = Item("A locked wallsafe, maybe the code is around here somewhere..." , ['describe'])
-
-lockers = Item("A set of lockers, all of which are open." , ['describe', 'search'])
-
-keypad = Item("A keypad, it must open the doors to this place." , ['use' 'describe'])
-
-painting = Item("an exact replica of the Mona Lisa" , ['take' 'describe' ])
-
-# Below are all the functions used within the game
-
-# This function is used to print the current room description
-
-def DescribeRoom():
-
-    if CurrentRoom == Room1:
-        return Room1.description
-    elif CurrentRoom == Room2:
-        return Room2.description
-    elif CurrentRoom == Room3:
-        return Room3.description
-    elif CurrentRoom == Room4:
-        return Room4.description
-
-# This function prints the items within a room
-
-def RoomItems():
-
-    if CurrentRoom == Room1:
-        return Room1.items
-    elif CurrentRoom == Room2:
-        return Room2.items
-    elif CurrentRoom == Room3:
-        return Room3.items
-    elif CurrentRoom == Room4:
-        return Room4.items
-
-# This function print the description of an item
-
-def ItemDescription():
-
-    SelectedItem = input("What item would you like to describe? " )
-
-    if SelectedItem == "table" and CurrentRoom == Room1:
-        return table.description
-    elif SelectedItem == "bed" and CurrentRoom == Room1:
-        return bed.description
-    elif SelectedItem == "paperclip" and "paperclip" in player.items:
-        return paperclip.description
-    elif SelectedItem == "wallsafe" and CurrentRoom == Room3:
-        return wallsafe.description
-    elif SelectedItem == "lockers" and CurrentRoom == Room3:
-        return lockers.description
-    elif SelectedItem == "keypad" and CurrentRoom == Room4:
-        return keypad.description
-    elif SelectedItem == "painting" and CurrentRoom == Room4:
-        return painting.description
-
-# This function describes the availible actions of an item
-
-def AvailibleActions():
-
-    SelectedItem = input("Which item would you like to know the actions for? ")
-
-    if SelectedItem == "table" and CurrentRoom == Room1:
-        return table.actions
-    elif SelectedItem == "bed" and CurrentRoom == Room1:
-        return bed.actions
-    elif SelectedItem == "paperclip" and "paperclip" in player.items:
-        return paperclip.actions
-    elif SelectedItem == "wallsafe" and CurrentRoom == Room3:
-        return wallsafe.actions
-    elif SelectedItem == "lockers" and CurrentRoom == Room3:
-        return lockers.actions
-    elif SelectedItem == "keypad" and CurrentRoom == Room4:
-        return keypad.actions
-    elif SelectedItem == "painting" and CurrentRoom == Room4:
-        return painting.actions
-
-# This function is used for when the player moves the table.
-
-def MoveTable():
-
-    global TableMoved
-
-    if TableMoved == True:
-        print("You already did that")
-    else:
-        print("You find a paperclip, it is added to you inventory")
-        player.items.append('paperclip')
-        TableMoved = True
-        return TableMoved
-
-# This fucntion is used when the player picks the lock
-
-def PickLock():
-
-    global Door1Locked
-
-    if "paperclip" in player.items and Door1Locked == True:
-        print("You pick the lock and the door swings open.")
-        Door1Locked = False
-        return Door1Locked
-    else:
-        print("You cannot open this door")
-
-# This function allows players to walk through the different Room
-
-def Walk():
-
-    global CurrentRoom
-
-    Direction = input("Which direction would you like to walk? ")
-
-    if Direction == "n" and CurrentRoom == Room1:
-        if Door1Locked == True:
-            print("The door is locked")
-        else:
-            print("You walk through the doorway.")
-            CurrentRoom = Room2
-            return CurrentRoom
+    if SelectedItems == ("table") and CurrentRoom == room1:
+        print("With actions for this item include" + table.actions)
 
 
-# The game code starts Here
+
+
+# This function makes the inputted string readable by the program
+
+def StringStripper(str):
+
+    Alpha = "abcdefghijklmnopqrstuvwxyz"
+
+    String = ""
+
+    str = str.lower() 
+
+    for c in str:
+        if c in Alpha:
+            String = String + c
+
+    return String
+
+# Here are some variables used within the game
 
 CurrentRoom = Room1
-TableMoved = False
-Door1Locked = True
 
-# This function allows the user to interact with room 1
+# This takes the users input and performs an action based on their choice
 
-def Room1Actions():
+def Actions():
 
     CurrentAction = input("What would you like to do? ")
 
-    if CurrentAction == "describe room":
-        print(DescribeRoom())
+    CurrentAction = StringStripper(CurrentAction)
+
+    if CurrentAction == "inventory":
+        if len(Player1.items) == 0:
+            print('You dont have any items')
+        else:
+            print('Player1.items')
+    elif CurrentAction == "score":
+        print(Player1.score)
+    elif CurrentAction == "help":
+        Help()
     elif CurrentAction == "items":
-        print(RoomItems())
-    elif CurrentAction == "describe item":
-        print(ItemDescription())
-    elif CurrentAction == "item actions":
-        print(AvailibleActions())
-    elif CurrentAction == "inventory":
-        print(player.items)
-    elif CurrentAction == "move table":
-        MoveTable()
-    elif CurrentAction == "pick lock":
-        PickLock()
-    elif CurrentAction == "walk":
-        Walk()
+        print("In this room are the following items" + ' ' + str(CurrentRoom.items))
+    elif CurrentAction == "description":
+        print(CurrentRoom.description)
+    elif CurrentAction == "directions":
+        print(CurrentRoom.directions)
+    elif CurrentAction == "itemactions":
+        ItemActions()
     else:
-        print("You cant do that")
+        print('You cant do that')
 
-# This while loop enables the user to do multiple things in a room before moving on.
 
-Swhile CurrentRoom == Room1:
-    Room1Actions()
+i = 1
+
+while i == 1:
+    Actions()
+        
+
+
+
