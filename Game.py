@@ -25,7 +25,7 @@ class Room(object):
 # Here are all the instances for the rooms
 
 Room1 = Room(['table' , 'bed'] , "A small room with no windows and a single door on the north wall", "In this room you can walk north")
-Room2 = Room([''], "A narrow room with a door on every wall", "in this room you can walk north, east, south and west")
+Room2 = Room([''], "A narrow room with a door on every wall", "In this room you can walk north, east, south and west")
 Room3 = Room(['keypad'], "An empty room with a keypad on the wall, maybe the code is around here somewhere...", "In this room you can walk east")
 Room4 = Room(['lockers'], "You find yourself in what looks like a staff room","In this room you can walk south")
 Room5 = Room(['Painting'], "An empty room with nothing put a picture on the wall", "In this room you can walk west")
@@ -46,13 +46,13 @@ bed = Item("A metal framed bed, it is bolted to the wall", ['describe'])
 paperclip = Item("A small paperclip, maybe you can pick a lock with that", ['describe' , 'pick lock'])
 keypad = Item("A small plastic keypad with the numbers 0-9", ['use', 'describe'])
 lockers = Item("A metal set of lockers, maybe there is something inside...",['describe','search'])
-Painting = Item("A large paiting maybe its worth something...", ['describe','take'])
+painting = Item("A large painting maybe its worth something...", ['describe','take'])
         
         
 
 # This is the help function
 
-def Help():
+def GameHelp():
 
     print('You have been trapped in a building, the aim of the game is to escape')
     print("To list current held type 'inventory' ")
@@ -61,7 +61,7 @@ def Help():
     print("To print the description of the room type 'describe room' ")
     print("To list all the directions you can walk in the current room type 'directions' ")
     print("To list all the availible actions for an item type 'item actions' ")
-    print("to print the description of an item type 'describe item' ")
+    print("To print the description of an item type 'describe item' ")
     print("To interact with an item type a command, for example 'move' which will then prompt you to select and object")
     print("To walk throughout the game type 'walk' it will then prompt you to enter a direction which is either 'n','e','s' or 'w'")
 
@@ -81,6 +81,10 @@ def ItemActions():
         print("actions for this item include;" + " " + str(paperclip.actions))
     elif SelectedItems == ("keypad") and CurrentRoom == Room3:
         print("actions for this item include;" + " " + str(keypad.actions))
+    elif SelectedItems == ("painting") and CurrentRoom == Room5:
+        print("actions for this item include;" + " " + str(painting.actions))
+    elif SelectedItems == ("lockers") and CurrentRoom == Room4:
+        print("actions for this item include;" + " " + str(lockers.actions))
     else:
         print("There is no such item")
 
@@ -100,11 +104,12 @@ def DescribeItem():
         print(paperclip.description)
     elif SelectedItems == ("keypad") and CurrentRoom == Room3:
         print(keypad.description)
-    elif SelectedItems == ("Lockers") and CurrentRoom == Room4:
-        print(paiting.description)
-    elif SelectedItems == ("Painting") and CurrentRoom == Room5:
-        print(Painting.description)
-
+    elif SelectedItems == "lockers" and CurrentRoom == Room4:
+        print(lockers.description)
+    elif SelectedItems == ("painting") and CurrentRoom == Room5:
+        print(painting.description)
+    elif SelectedItems == ("painting") and "painting" in Player1.items:
+        print(painting.description)
     else:
         print("There is no such item")
 
@@ -132,6 +137,8 @@ def Move():
 
 def Use():
 
+    global GameCompleted
+
     keypadCode = ['1','4','1','7']
     CurrentGuess = []
 
@@ -155,13 +162,39 @@ def Use():
             print("You awaken back in your home, free at last")
             print("Your score was" + " " + str(Player1.score))
             print("Thanks for playing")
+            GameCompleted = True
         else:
             print("Nothing happend")
     else:
         print("You cant do that")
 
-        
+# This is the function to search the lockers
 
+def Search():
+
+    SelectedItems = input("What item would you like to search? ")
+    
+    SelectedItems = StringStripper(SelectedItems)
+
+    if SelectedItems == ("lockers") and CurrentRoom == Room4:
+        print("You search the lockers and find a code it reads 1,4,1,7")
+    else:
+        print("You cannot do that")
+
+# This is used to take items within the game
+
+def Take():
+
+    SelectedItems = input("What item would you like to take? ")
+    
+    SelectedItems = StringStripper(SelectedItems)
+
+    if SelectedItems == ("painting") and CurrentRoom == Room5:
+        print("You take the painting")
+        Player1.items.append('painting')
+        Player1.score += 100
+    else:
+        print("You cannot do that")
 
 
 
@@ -215,11 +248,14 @@ def Walk():
     elif CurrentRoom == Room2 and direction == "e":
         print("You walk into the room")
         CurrentRoom = Room5
+    elif CurrentRoom == Room5 and direction == "w":
+        print("You walk back into the hallway")
+        CurrentRoom = Room2
     else:
         ("You cant go that way")
 
 
-# This function makes the inputted string readable by the program
+# This function changes users inputted strings into a standard format
 
 def StringStripper(str):
 
@@ -240,8 +276,9 @@ def StringStripper(str):
 CurrentRoom = Room1
 TableMoved = False
 Door1Locked = True
+GameCompleted = False
 
-# This takes the users input and performs an action based on their choice
+# This takes the users input and performs an action based on their choice.
 
 def Actions():
 
@@ -279,13 +316,17 @@ def Actions():
         PickLock()
     elif CurrentAction == "use":
         Use()
+    elif CurrentAction == "search":
+        Search()
+    elif CurrentAction == "take":
+        Take()
     else:
         print('You cant do that')
 
+print("You awaken in an unknown room")
+GameHelp()
 
-i = 1
-
-while i == 1:
+while GameCompleted == False:
     Actions()
         
 
