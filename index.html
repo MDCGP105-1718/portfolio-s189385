@@ -5,8 +5,9 @@
 	<title>TELEMARK</title>
 	 <link rel="stylesheet" type="text/css" href="css.css">
 	  <meta charset="utf-8"/>
-	   <meta name="viewport" content="width=device-width">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?u8vidh">
+	     <script src="js.js"></script>
 
 </head>
 <body>
@@ -25,14 +26,16 @@
 
 			<div class="LogoContainer"></div>
 
+			<div class="BurgerMenu" onclick="DropDown()"></div>
+
 			<div class="NavContainer">
 				
 				<nav>
 					<ul>
-						<li><a href="">MEET THE TEAM</a></li>
-						<li><a href="">NEWS, RESULTS AND EVENTS</a></li>
-						<li><a href="">WHAT IS TELEMARK RACING?</a></li>
-						<li><a href="">SPONSORS</a></li>
+						<li><a href="#MeetTheTeam">MEET THE TEAM</a></li>
+						<li><a href="#News">NEWS, RESULTS AND EVENTS</a></li>
+						<li><a href="#WhatIs">WHAT IS TELEMARK RACING?</a></li>
+						<li><a href="#Sponsors">SPONSORS</a></li>
 					</ul>
 				</nav>
 
@@ -43,8 +46,32 @@
 	</header>
 
 	<div class="BodyContainer">
+
+
 		
-		<div class="JavaSlideshowContainer"></div>
+		<div class="JavaSlideshowContainer">
+
+			
+
+
+		<div id="slideshow">
+   		
+   		<div style="overflow: hidden;">
+     		<img style="height: auto; width: 100%; overflow: hidden;" src="https://live-admin-markwarner3.tigerbay.co.uk/resize.ashx?f=France_New_1000x300.jpg&w=0&h=0">
+        </div>
+
+		<div style="overflow: hidden;">
+		    <img style="height: auto; width: 100%; overflow: hidden;" src="https://cdn.shopify.com/s/files/1/0268/0675/files/TeamSnow.jpg?784">
+		  </div>
+  
+        </div>
+
+
+		</div>
+
+
+        <a name="MeetTheTeam"></a>
+
 
 		<div class="WelcomeText">
 			<h1>WELCOME TO BRITISH TELEMARK</h1>
@@ -52,15 +79,61 @@
 			</p>
 		</div>
 
+
+
 		<div class="MeetTheTeamContainer">
+
+			
 
 			<h1>MEET THE TEAM</h1>
 
-			<div class="ProfilesContainer"></div>
+			<div class="ProfilesContainer">
+				
+
+				<div class="ProfileContainer">
+					<div class="ProfilePhoto"></div>
+					<div class="ProfileText">
+						<h2>Alex Jacobs</h2>
+						<h3>Web Developer</h3>
+					</div>
+				</div>
+
+				<div class="ProfileContainer">
+					<div class="ProfilePhoto"></div>
+					<div class="ProfileText">
+						<h2>Alex Jacobs</h2>
+						<h3>Web Developer</h3>
+					</div>
+
+				</div>
+
+				<div class="ProfileContainer">
+					<div class="ProfilePhoto"></div>
+					<div class="ProfileText">
+						<h2>Alex Jacobs</h2>
+						<h3>Web Developer</h3>
+					</div>
+				</div>
+
+				<div class="ProfileContainer">
+					<div class="ProfilePhoto"></div>
+					<div class="ProfileText">
+						<h2>Alex Jacobs</h2>
+						<h3>Web Developer</h3>
+					</div>
+
+				</div>
+
+
+			</div>
 
 		</div>
 
+
+
 		<div class="NewsContainer">
+
+			<a name="News"></a>
 			
 			<h1>NEWS, RESULTS AND EVENTS</h1>
 
@@ -68,64 +141,89 @@
 
 				<div class="Collumn">
 					
-					<div class="LargeArticle"></div>
+					<div class="LargeArticle"><p>This is an example of a large news article</p></div>
 
-					<div class="SmallArticle" style="margin-top: 50px;"></div>
+					<div class="SmallArticle" style="margin-top: 50px;"><p>"This is an example tweet"</p></div>
 
 				</div>
 
 				<div class="Collumn">
 					
-					<div class="SmallArticle"></div>
+					<div class="SmallArticle"><p>"This is an example tweet"</p></div>
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticle"><p>"This is an example tweet"</p></div>
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticle"><p>"This is an example tweet"</p></div>
 				</div>
 
 				<div class="Collumn">
 					
-					<div class="SmallArticle"></div>
+					<div class="SmallArticle"><p>"This is an example tweet"</p></div>
 
-					<div class="LargeArticle" style=" margin-top: 50px; "></div>
+					<div class="LargeArticle" style=" margin-top: 50px; "><p>This is an example of a large news article</p></div>
 				</div>	
 
 			</div>			
 			
 		</div>
 
+	
+
 		<div class="VideoContainer">
+
+				<a name="WhatIs"></a>
+
+
 			
 			<h1>WHAT IS TELEMARK RACING?</h1>
 
 			<div class="VideoInner">
-				<iframe width="800" height="450" src="https://www.youtube.com/embed/IQLntGLcRPA" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/IQLntGLcRPA" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 			</div>
+		
 		</div>
 
 		<div class="SponsorsContainer">
+
+			<a name="Sponsors"></a>
 			
 			<h1>SPONSORS</h1>
+
+
+
 
 			<div class="SponsorsContainerInner">
 
 				<div class="Collumn"> 
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticleSponsors">
+						<img src="http://www.agm-plc.co.uk/wp-content/themes/agm_2015/images/agm-logo-head.fw.png">
+					</div>
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticleSponsors">
+							<img src="https://www.skidemon.co.uk/wp-content/uploads/dare2b-logo-420x185.gif">
+						
+					</div>
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticleSponsors">
+						<img src="http://www.mountainadventure.co.nz/img/c/11-tm_home_default.jpg">
+					</div>
 
 				</div>
 
 				<div class="Collumn">
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticleSponsors">
+						<img src="http://www.uboutdoors.com/wp-content/uploads/2010/01/point6-logo.jpg">
+					</div>
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticleSponsors">
+						<img src="http://www.skieur.com/media/concours/vola_nov_2016/logo_vola.jpg">
+					</div>
 
-					<div class="SmallArticle"></div>
+					<div class="SmallArticleSponsors">
+						<img src="http://gbtelemark.co.uk/wp-content/uploads/2009/08/snow_angel.png">
+					</div>
 
 				 </div>
 
@@ -137,6 +235,22 @@
 		</div>
 
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() { 
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(2000)
+    .end()
+    .appendTo('#slideshow');
+},  3000);
+
+	</script>
 
 </body>
 </html>
